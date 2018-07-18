@@ -7,10 +7,10 @@ import { Provider } from 'react-redux'
 import reducer from './reducers'
 import middleware from './middleware'
 
-const store = createStore(reducer)
+const store = createStore(reducer, middleware)
 
 ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={store}> 
         <App />
     </Provider>,
 document.getElementById('root')
