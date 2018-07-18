@@ -15,34 +15,43 @@ class QuestionList extends Component {
                 // fill the array with matching objects from questions array, so that we know the timestamp and know when the question was posted
 
                 if (all.hasOwnProperty(id)) {
-                    console.log("id", id);
                     let matchedQuestionObject = all[id]
                     answeredQuestionsArray = [...answeredQuestionsArray, matchedQuestionObject]
                 }
+                
             }
             // sort the answers from most recent
             answeredQuestionsArray.sort(function (x, y) {
-                console.log("siusiak", x.timestamp, y.timestamp);
                 return y.timestamp - x.timestamp;
             })
-            console.log("answeredquestionsarray: ", answeredQuestionsArray);
             return answeredQuestionsArray
         } else {
-
+            // create an empty array
+            let unansweredQuestionsArray = []
+            // iterate through all questions object and see if any of the questions inside
+            // are also present in the answered object passed to this function
+            for (var id in all) {
+                if(!answered.hasOwnProperty(id)) {
+                    unansweredQuestionsArray = [...unansweredQuestionsArray, all[id]]
+                }
+            }
+            unansweredQuestionsArray.sort(function (x, y) {
+                return y.timestamp - x.timestamp;
+            })
+            return unansweredQuestionsArray
         }
     }
 
     render() {
         const { questions, users, authedUser, isAnswered } = this.props
         const answered = users[authedUser].answers
+        console.log("answered", answered)
         const sorted = this.returnQuestions(answered, questions, isAnswered)
-        console.log("SORTED: ", sorted);
         return (
             <div>
                 <ul>
-                    {
+                    { 
                         sorted.map((question) => (
-                            
                             <li key={question.id}><Question id={question.id} /></li>
                         ))
                     }
