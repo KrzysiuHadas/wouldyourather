@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import QuestionList from './QuestionList'
-
+import Profile from './Profile'
 class Dashboard extends Component {
 
     state = {
@@ -29,7 +28,10 @@ class Dashboard extends Component {
                         ? <QuestionList type={'answered'} />
                         : <QuestionList type={'unanswered'} />
                 }
-                
+                <br />
+                <hr />
+                <br />
+                <Profile />
             </div>
         )
     }
@@ -37,4 +39,4 @@ class Dashboard extends Component {
 
 
 
-export default connect()(Dashboard)
+export default Dashboard
