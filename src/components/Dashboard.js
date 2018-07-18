@@ -5,8 +5,7 @@ import QuestionList from './QuestionList'
 class Dashboard extends Component {
 
     state = {
-        // change this to FALSE later, which is the initial state! TRUE JUST FOR TESTING PURPOSES NOW
-        answered: true,
+        answered: false,
     }
 
     toggleUnansweredClicked = (e) => {
@@ -27,8 +26,8 @@ class Dashboard extends Component {
                 </button>
                 {
                     this.state.answered 
-                        ? <QuestionList isAnswered={true} />
-                        : <QuestionList isAnswered={false} />
+                        ? <QuestionList type={'answered'} />
+                        : <QuestionList type={'unanswered'} />
                 }
                 
             </div>

@@ -4,7 +4,7 @@ import { receiveQuestions } from './questions'
 import { setAuthedUser } from './authedUser.js'
 import { showLoading, hideLoading } from 'react-redux-loading'
 
-// tymczasowy user, potem ustawic usera takiego jakiego wybierzesz z login screena.
+// temporary user, later choosing from home screen should work
 const AUTHED_ID = 'johndoe'
 
 export function handleInitialData() {
