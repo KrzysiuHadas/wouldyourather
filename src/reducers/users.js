@@ -11,7 +11,6 @@ export default function users (state = {}, action) {
         case ANSWER_QUESTION_USER :
             const { authedUser, qid, answer } = action
 
-            console.log("to jest reducer USERA");
             return {
                 ...state,
                 [authedUser]: {

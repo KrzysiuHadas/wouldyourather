@@ -40,16 +40,6 @@ class QuestionDetails extends Component {
             answer
         }))
 
-        //onst { users, questions } = getInitialData()
-
-        _getUsers()
-            .then((users) => {
-                console.log("userki: ", users)
-            })
-
-
-        //console.log("questionsy: ", questions);
-        
     }
     render() {
         const { questions, authedUser } = this.props
@@ -68,8 +58,6 @@ class QuestionDetails extends Component {
             numberOfPeopleVotedOne = questions[currentQuestionID].optionOne.votes.length
             numberOfPeopleVotedTwo = questions[currentQuestionID].optionTwo.votes.length
             allVotes = numberOfPeopleVotedOne + numberOfPeopleVotedTwo
-            console.log("wszystkie wołty: ", allVotes);
-            console.log("te wołty: ", numberOfPeopleVotedTwo);
         }
 
         return (

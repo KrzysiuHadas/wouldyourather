@@ -1,6 +1,6 @@
-import { getInitialData } from '../utils/_DATA'
+import { getInitialData, _saveQuestion } from '../utils/_DATA'
 import { receiveUsers, addAnswerToQuestionToUser } from './users'
-import { receiveQuestions, addAnswerToQuestion } from './questions'
+import { receiveQuestions, addAnswerToQuestion, addQuestion } from './questions'
 import { setAuthedUser } from './authedUser.js'
 import { showLoading, hideLoading } from 'react-redux-loading'
 import { _saveQuestionAnswer } from '../utils/_DATA'
@@ -28,6 +28,15 @@ export function handleAnswerQuestion(info) {
             .then(() => {
                 dispatch(addAnswerToQuestion(info))
                 dispatch(addAnswerToQuestionToUser(info))
+            })
+    }
+}
+
+export function handleAddQuestion(info) {
+    return (dispatch) => {
+        return _saveQuestion(info)
+            .then((question) => {
+                dispatch(addQuestion(question))
             })
     }
 }

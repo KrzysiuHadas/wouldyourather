@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { handleAddQuestion } from '../actions/shared';
 
 class AddQuestion extends Component {
 
@@ -20,7 +21,6 @@ class AddQuestion extends Component {
     }
     handleSecondChange = (e) => {
         const optionTwo = e.target.value
-
         
         this.setState((oldState) => ({
             optionTwo,
@@ -32,11 +32,17 @@ class AddQuestion extends Component {
         
     handleSubmit = (e) => {
         e.preventDefault()
+        const optionOneText = this.state.optionOne
+        const optionTwoText = this.state.optionTwo
+        const author = this.props.authedUser
 
+        // TODO: dispatch a new question to the db
 
-
-        console.log("optionOne ", this.state.optionOne)
-        console.log("optionTwo ", this.state.optionTwo)
+        this.props.dispatch(handleAddQuestion({
+            author,
+            optionOneText,
+            optionTwoText
+        }))
 
         this.setState(()=>({
             optionOne: '',
