@@ -35,7 +35,7 @@ class AddQuestion extends Component {
         const optionOneText = this.state.optionOne
         const optionTwoText = this.state.optionTwo
         const author = this.props.authedUser
-
+        console.log("aaaaaaaA", this.props);
         // TODO: dispatch a new question to the db
 
         this.props.dispatch(handleAddQuestion({
@@ -84,4 +84,10 @@ class AddQuestion extends Component {
     }
 }
 
-export default connect()(AddQuestion)
+function mapStateToProps({ authedUser }){
+    return {
+        authedUser
+    }
+}
+
+export default connect(mapStateToProps)(AddQuestion)

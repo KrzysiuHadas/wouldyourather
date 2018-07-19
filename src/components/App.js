@@ -21,7 +21,7 @@ class App extends Component {
         <LoadingBar />
         {this.props.loading === true
           ? null
-          : <div><QuestionDetails /><AddQuestion /></div>// Should be Dashboard, QuestionDetails just for testing
+          : <div><Profile /><AddQuestion /></div>// Should be Dashboard, QuestionDetails just for testing
         }
       </div>
     )

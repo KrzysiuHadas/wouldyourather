@@ -37,6 +37,7 @@ export function handleAddQuestion(info) {
         return _saveQuestion(info)
             .then((question) => {
                 dispatch(addQuestion(question))
+                // TODO: add an action that adds that new question ID to the users database
             })
     }
 }
