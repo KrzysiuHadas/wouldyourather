@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { handleInitialData } from '../actions/shared'
 import Dashboard from './Dashboard'
 import QuestionDetails from './QuestionDetails'
+import Profile from './Profile'
+
 
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
@@ -14,7 +16,6 @@ class App extends Component {
   }
 
   render() {
-    console.log("AUTHEDAUTHED", this.props.authedUser);
     return (
       <div>
         <LoadingBar />
