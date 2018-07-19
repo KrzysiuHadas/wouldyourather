@@ -6,8 +6,7 @@ import QuestionList from './QuestionList'
 class Profile extends Component {
 
   render() {
-    const { users, questions, authedUser } = this.props
-    const currentQuestionID = '6ni6ok3ym7mf1p33lnez'
+    const { users, authedUser } = this.props
     // TODO: Show avatar
     // 
     console.log(authedUser);
@@ -24,10 +23,9 @@ class Profile extends Component {
   }
 }
 
-function mapStateToProps({ users, questions, authedUser}) {
+function mapStateToProps({ users, authedUser}) {
     return {
         users,
-        questions,
         authedUser
     }
 }

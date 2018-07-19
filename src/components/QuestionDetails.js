@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { handleAnswerQuestion } from '../actions/shared';
 
 
 class QuestionDetails extends Component {
@@ -15,12 +16,15 @@ class QuestionDetails extends Component {
             // get the votes for both options
             const optionOneArray = currentQuestion.optionOne.votes
             const optionTwoArray = currentQuestion.optionTwo.votes
-
+            console.log("PIERWSZA TABLICA: ", optionOneArray);
+            console.log("DRUGA TABLICA: ", optionTwoArray);
             // check if any of them contains the authed User
 
             if (optionOneArray.includes(authedUser)) {
+                console.log('tutaj');
                 return 'optionOne'
             } else if (optionTwoArray.includes(authedUser)) {
+                console.log('tutaj');
                 return 'optionTwo'
             }
         }
@@ -28,10 +32,23 @@ class QuestionDetails extends Component {
         return null
     }
 
+    questionAnswered = (e) => {
+        e.preventDefault()
+        const {authedUser, dispatch} = this.props
+        const currentQuestionID = 'loxhs1bqm25b708cmbf3g'
+        const answer = e.target.value
 
+        dispatch(handleAnswerQuestion({
+            authedUser,
+            qid: currentQuestionID,
+            answer
+        }))
+
+        
+    }
     render() {
-        const { users, questions, authedUser } = this.props
-        const currentQuestionID = 'vthrdm985a262al8qx3do'
+        const { questions, authedUser } = this.props
+        const currentQuestionID = 'loxhs1bqm25b708cmbf3g'
 
         let optionOne = ''
         let optionTwo = ''
@@ -48,7 +65,7 @@ class QuestionDetails extends Component {
             allVotes = numberOfPeopleVotedOne + numberOfPeopleVotedTwo
         }
 
-
+        console.log("#########", this.checkIfQuestionAnswered(currentQuestionID));
 
         return (
             <div>
@@ -56,21 +73,45 @@ class QuestionDetails extends Component {
                 Author: {author}
                 <br />
                 {
+                    // if the question has been answered, show this:
                     this.checkIfQuestionAnswered(currentQuestionID) &&
                     <ul>
                         <li>
                             {
                                 this.checkIfQuestionAnswered(currentQuestionID) === 'optionOne' &&
-                                <p>This is your answer:</p>
+                                <span role="img">✅ </span>
                             }
                             {optionOne} ({numberOfPeopleVotedOne} vote | {numberOfPeopleVotedOne / allVotes * 100}%)
                         </li>
                         <li>
                             {
                                 this.checkIfQuestionAnswered(currentQuestionID) === 'optionTwo' &&
-                                <span>✅ </span>
+                                <span role="img">✅ </span>
                             }
                             {optionTwo} ({numberOfPeopleVotedTwo} vote | {numberOfPeopleVotedOne / allVotes * 100}%)
+                        </li>
+                    </ul>
+                }
+
+                {
+                    // if the question has NOT been answered, show this:
+                    this.checkIfQuestionAnswered(currentQuestionID) === null &&
+                    <ul>
+                        <li>
+                            <button
+                                onClick={this.questionAnswered}
+                                value="optionOne"
+                                >
+                                ⭕️
+                            </button> {optionOne}
+                        </li>
+                        <li>
+                            <button
+                                onClick={this.questionAnswered}
+                                value="optionTwo"
+                                >
+                                ⭕️
+                            </button> {optionTwo}
                         </li>
                     </ul>
                 }
@@ -80,9 +121,8 @@ class QuestionDetails extends Component {
     }
 }
 
-function mapStateToProps({ users, questions, authedUser }) {
+function mapStateToProps({ questions, authedUser }) {
     return {
-        users,
         questions,
         authedUser
     }
