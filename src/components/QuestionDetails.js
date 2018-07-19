@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAnswerQuestion } from '../actions/shared';
-
+import {getInitialData, _getUsers } from '../utils/_DATA'
 
 class QuestionDetails extends Component {
 
@@ -16,15 +16,11 @@ class QuestionDetails extends Component {
             // get the votes for both options
             const optionOneArray = currentQuestion.optionOne.votes
             const optionTwoArray = currentQuestion.optionTwo.votes
-            console.log("PIERWSZA TABLICA: ", optionOneArray);
-            console.log("DRUGA TABLICA: ", optionTwoArray);
             // check if any of them contains the authed User
 
             if (optionOneArray.includes(authedUser)) {
-                console.log('tutaj');
                 return 'optionOne'
             } else if (optionTwoArray.includes(authedUser)) {
-                console.log('tutaj');
                 return 'optionTwo'
             }
         }
@@ -44,6 +40,15 @@ class QuestionDetails extends Component {
             answer
         }))
 
+        //onst { users, questions } = getInitialData()
+
+        _getUsers()
+            .then((users) => {
+                console.log("userki: ", users)
+            })
+
+
+        //console.log("questionsy: ", questions);
         
     }
     render() {
@@ -63,9 +68,9 @@ class QuestionDetails extends Component {
             numberOfPeopleVotedOne = questions[currentQuestionID].optionOne.votes.length
             numberOfPeopleVotedTwo = questions[currentQuestionID].optionTwo.votes.length
             allVotes = numberOfPeopleVotedOne + numberOfPeopleVotedTwo
+            console.log("wszystkie wołty: ", allVotes);
+            console.log("te wołty: ", numberOfPeopleVotedTwo);
         }
-
-        console.log("#########", this.checkIfQuestionAnswered(currentQuestionID));
 
         return (
             <div>
@@ -88,7 +93,7 @@ class QuestionDetails extends Component {
                                 this.checkIfQuestionAnswered(currentQuestionID) === 'optionTwo' &&
                                 <span role="img">✅ </span>
                             }
-                            {optionTwo} ({numberOfPeopleVotedTwo} vote | {numberOfPeopleVotedOne / allVotes * 100}%)
+                            {optionTwo} ({numberOfPeopleVotedTwo} vote | {numberOfPeopleVotedTwo / allVotes * 100}%)
                         </li>
                     </ul>
                 }

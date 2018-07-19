@@ -1,5 +1,5 @@
-import { ANSWER_QUESTION } from './questions'
 export const RECEIVE_USERS = 'RECEIVE_USERS'
+export const ANSWER_QUESTION_USER = 'ANSWER_QUESTION_USER'
 
 export function receiveUsers (users) {
     return {
@@ -10,7 +10,7 @@ export function receiveUsers (users) {
 
 export function addAnswerToQuestionToUser ({ authedUser, qid, answer}) {
     return {
-        type: ANSWER_QUESTION,
+        type: ANSWER_QUESTION_USER,
         authedUser,
         qid,
         answer

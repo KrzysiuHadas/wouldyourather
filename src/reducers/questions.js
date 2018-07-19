@@ -10,7 +10,7 @@ export default function questions(state = {}, action) {
         case ANSWER_QUESTION:
             const { authedUser, qid, answer } = action
 
-            console.log("wpadłem do dobrego recudera", state[qid][answer].votes);
+            console.log("to jest reducer QUESTION");
             return {
                 ...state,
                 [qid]: {

@@ -31,7 +31,6 @@ class Dashboard extends Component {
                 <br />
                 <hr />
                 <br />
-                <Profile />
             </div>
         )
     }
