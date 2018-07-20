@@ -1,8 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Question from './Question'
+import { Grid, Paper } from '@material-ui/core'
+
+
+const style = {
+    Paper: { padding: 20, marginTop: 10, marginBottom: 10 }
+}
+
 
 class QuestionList extends Component {
+
+
 
     returnQuestions = (answered, all, type) => {
         // take all answered questions of authed user, all questions and the state of the dashboard
@@ -61,15 +70,16 @@ class QuestionList extends Component {
         const { questions, users, authedUser, type } = this.props
         const answered = users[authedUser].answers
         const sorted = this.returnQuestions(answered, questions, type)
+        const spacing = 16
         return (
             <div>
-                <ul>
+                <Grid container spacing={spacing} justify="center">
                     {
                         sorted.map((question) => (
-                            <li key={question.id}><Question id={question.id} /></li>
+                            <Grid item xs key={question.id} ><Paper style={{ padding: 10, marginTop: 10, marginBottom: 10 }}><Question id={question.id} /></Paper></Grid >
                         ))
                     }
-                </ul>
+                </Grid >
             </div>
         )
     }

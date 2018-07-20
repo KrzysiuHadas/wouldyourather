@@ -9,6 +9,7 @@ import Login from './Login'
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
 import Leaderboard from './Leaderboard';
+import QuestionList from './QuestionList';
 
 
 class App extends Component {
@@ -21,10 +22,12 @@ class App extends Component {
     return (
       <div>
         <LoadingBar />
-        {this.props.loading === true
-          ? null
-          : <div><Login /><hr /><Leaderboard /> <QuestionDetails /></div>// Should be Dashboard, QuestionDetails just for testing
-        }
+        <div style={{ padding: 20 }} >
+          {this.props.loading === true
+            ? null
+            : <div><QuestionDetails /></div>// Should be Dashboard, QuestionDetails just for testing
+          }
+        </div>
       </div>
     )
   }

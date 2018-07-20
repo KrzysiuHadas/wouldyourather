@@ -113,6 +113,19 @@ let questions = {
       text: 'write Swift'
     }
   },
+  "loxhs1bqm25b708cmbf3g": {
+    id: 'loxhs1bqm25b708cmbf3g',
+    author: 'tylermcginnis',
+    timestamp: 1482579767190,
+    optionOne: {
+      votes: [],
+      text: 'be a front-end developer',
+    },
+    optionTwo: {
+      votes: ['sarahedo'],
+      text: 'be a back-end developer'
+    }
+  },
 }
 
 function generateUID () {
@@ -193,7 +206,9 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
           }
         }
       }
-
+      console.log("Authed: ", authedUser)
+      console.log("qid: ", qid)
+      console.log("Answer: ", answer)
       questions = {
         ...questions,
         [qid]: {
