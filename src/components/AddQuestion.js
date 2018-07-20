@@ -35,8 +35,6 @@ class AddQuestion extends Component {
         const optionOneText = this.state.optionOne
         const optionTwoText = this.state.optionTwo
         const author = this.props.authedUser
-        console.log("aaaaaaaA", this.props);
-        // TODO: dispatch a new question to the db
 
         this.props.dispatch(handleAddQuestion({
             author,
