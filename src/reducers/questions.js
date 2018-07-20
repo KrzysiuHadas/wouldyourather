@@ -10,7 +10,6 @@ export default function questions(state = {}, action) {
         case ANSWER_QUESTION:
             const { authedUser, qid, answer } = action
 
-            console.log("to jest reducer QUESTION");
             return {
                 ...state,
                 [qid]: {

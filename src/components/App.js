@@ -4,6 +4,7 @@ import Dashboard from './Dashboard'
 import QuestionDetails from './QuestionDetails'
 import Profile from './Profile'
 import AddQuestion from './AddQuestion'
+import Login from './Login'
 
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
@@ -22,7 +23,7 @@ class App extends Component {
         <LoadingBar />
         {this.props.loading === true
           ? null
-          : <div><Leaderboard /></div>// Should be Dashboard, QuestionDetails just for testing
+          : <div><Login /><hr /><Leaderboard /> <QuestionDetails /></div>// Should be Dashboard, QuestionDetails just for testing
         }
       </div>
     )

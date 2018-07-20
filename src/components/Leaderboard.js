@@ -30,30 +30,31 @@ class Leaderboard extends Component {
                 arrayOfFormattedUsers.push(sss)
             }, this)
         }
-        
+
         arrayOfFormattedUsers.sort(function (x, y) {
             return y.score - x.score;
         })
 
         return (
             <table border="1" cellPadding="0" cellSpacing="0" width="500">
-                <tr>
-                    <td>Name</td>
-                    <td>Avatar</td>
-                    <td>Answered questions</td>
-                    <td>Asked questions</td>
-                </tr>
-                {
-                    arrayOfFormattedUsers.map((user) => (
-                        <tr>
-                            <td>{user.name}</td>
-                            <td>Avatar</td>
-                            <td>{user.numberOfAnswers}</td>
-                            <td>{user.numberOfQuestionsAsked}</td>
-                        </tr>
-                    ))
-                }
-
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td>Avatar</td>
+                        <td>Answered questions</td>
+                        <td>Asked questions</td>
+                    </tr>
+                    {
+                        arrayOfFormattedUsers.map((user) => (
+                            <tr key={user.name}>
+                                <td>{user.name}</td>
+                                <td>Avatar</td>
+                                <td>{user.numberOfAnswers}</td>
+                                <td>{user.numberOfQuestionsAsked}</td>
+                            </tr>
+                        ))
+                    }
+                </tbody>
             </table>
         )
     }
