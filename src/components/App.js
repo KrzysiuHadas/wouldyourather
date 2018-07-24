@@ -1,11 +1,10 @@
-import { handleInitialData, handleAddQuestion } from '../actions/shared'
+import { handleInitialData } from '../actions/shared'
 import Dashboard from './Dashboard'
 import QuestionDetails from './QuestionDetails'
 import Profile from './Profile'
 import AddQuestion from './AddQuestion'
 import Login from './Login'
 import Leaderboard from './Leaderboard'
-import QuestionList from './QuestionList'
 import Nav from './Nav'
 
 import React, { Component } from 'react'
@@ -15,7 +14,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography'
-import yellow from '@material-ui/core/colors/yellow';
 
 class App extends Component {
 
@@ -28,7 +26,7 @@ class App extends Component {
       <Router>
         <div>
           <LoadingBar />
-          <AppBar position="static" color="">
+          <AppBar position="static" color="TenBialyNajbardziejGownianyNieUmiemZmienicKurła">
             <Toolbar variant="dense">
               <Typography variant="title" color="inherit">
                 <Nav />

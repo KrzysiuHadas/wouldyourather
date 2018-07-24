@@ -66,7 +66,6 @@ class QuestionList extends Component {
         const { questions, users, authedUser, type } = this.props
         const answered = users[authedUser].answers
         const sorted = this.returnQuestions(answered, questions, type)
-        const spacing = 16
         return (
             <div>
                 <Grid container spacing={8}>

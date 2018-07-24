@@ -16,7 +16,7 @@ class Profile extends Component {
       <div>
         <div className="center">
           <Typography variant="display1" >@{authedUser}</Typography><br />
-          <img src={imageURL} width="125" height="125" />
+          <img src={imageURL} width="125" height="125" alt="avatar"/>
         </div>
         <Typography variant="headline"> Asked questions</Typography>
         <QuestionList type="asked" />

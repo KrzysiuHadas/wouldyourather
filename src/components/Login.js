@@ -22,7 +22,7 @@ class Login extends Component {
                 {
                     arrayOfUsers.map((user) => (
                         <div key={user.id}>
-                            <img src={user.avatarURL} width="125" height="125" />
+                            <img src={user.avatarURL} width="125" height="125" alt="avatar"/>
                             <p>{user.id}</p>
                             <button onClick={this.loginButtonClicked}
                                 value={user.id}>

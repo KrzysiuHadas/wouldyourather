@@ -1,11 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAnswerQuestion } from '../actions/shared';
-import { Link } from 'react-router-dom'
-
-const style = {
-    'button': {border: 'none'}
-}
 
 class QuestionDetails extends Component {
 
