@@ -15,6 +15,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography'
+import yellow from '@material-ui/core/colors/yellow';
 
 class App extends Component {
 
@@ -27,7 +28,7 @@ class App extends Component {
       <Router>
         <div>
           <LoadingBar />
-          <AppBar position="static" color="primary">
+          <AppBar position="static" color="">
             <Toolbar variant="dense">
               <Typography variant="title" color="inherit">
                 <Nav />

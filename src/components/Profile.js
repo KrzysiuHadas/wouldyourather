@@ -14,11 +14,13 @@ class Profile extends Component {
     console.log(authedUser);
     return (
       <div>
-        <Typography variant="display1" >@{authedUser}</Typography>
-        <img src={imageURL} width="125" height="125"/>
+        <div className="center">
+          <Typography variant="display1" >@{authedUser}</Typography><br />
+          <img src={imageURL} width="125" height="125" />
+        </div>
         <Typography variant="headline"> Asked questions</Typography>
         <QuestionList type="asked" />
-        <hr />
+        
         <Typography variant="headline"> Answered questions</Typography>
         <QuestionList type="answered" />
       </div>
@@ -26,11 +28,11 @@ class Profile extends Component {
   }
 }
 
-function mapStateToProps({ users, authedUser}) {
-    return {
-        users,
-        authedUser
-    }
+function mapStateToProps({ users, authedUser }) {
+  return {
+    users,
+    authedUser
+  }
 }
 
 export default connect(mapStateToProps)(Profile)

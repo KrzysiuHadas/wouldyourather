@@ -1,7 +1,6 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
   color: #252525;
 }
 
@@ -36,6 +35,7 @@ a {
 .center {
   text-align: center;
 }
+
 
 .active {
   font-weight: bold;
