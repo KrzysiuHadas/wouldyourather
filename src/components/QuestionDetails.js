@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAnswerQuestion } from '../actions/shared';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Paper from '@material-ui/core/Paper'
+
+
+const style = {
+    'button': {border: 'none'}
+}
+
 class QuestionDetails extends Component {
 
     // This function returns the answered option if the question has been answered.
@@ -34,10 +36,8 @@ class QuestionDetails extends Component {
         e.preventDefault()
         const {authedUser, dispatch} = this.props
         const currentQuestionID = 'loxhs1bqm25b708cmbf3g'
-        // tu jest problem
         const answer = e.target.value
 
-        console.log("TUTEEEJ, ", answer)
         dispatch(handleAnswerQuestion({
             authedUser,
             qid: currentQuestionID,
@@ -65,7 +65,7 @@ class QuestionDetails extends Component {
         }
 
         return (
-            <div> <Paper style={{ padding: 10, marginTop: 10, marginBottom: 10 }}>
+            <div>
                 <h2>Would you rather</h2>
                 Author: {author}
                 <br />
@@ -93,22 +93,28 @@ class QuestionDetails extends Component {
                 {
                     // if the question has NOT been answered, show this:
                     this.checkIfQuestionAnswered(currentQuestionID) === null &&
-                    <List>
-                        <ListItem button
+                    <ul>
+                        <li>
+                            <button
                                 onClick={this.questionAnswered}
                                 value="optionOne"
+                                className='btn'
                                 >
-                                <ListItemText primary={optionOne} />
-                        </ListItem>
-                        <ListItem button
+                                {optionOne}
+                            </button> 
+                        </li>
+                        <li>
+                            <button
                                 onClick={this.questionAnswered}
                                 value="optionTwo"
+                                className='btn'
                                 >
-                                <ListItemText primary={optionTwo} />
-                        </ListItem>
-                    </List>
+                                {optionTwo}
+                            </button> 
+                        </li>
+                    </ul>
                 }
-</Paper>
+
             </div>
         )
     }
