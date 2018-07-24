@@ -7,11 +7,11 @@ class Question extends Component {
     render() {
         const {optionOne, optionTwo} = this.props
         return (
-            <div width="400" >
-                <Typography variant="headline"  component="h3">Would you rather: </Typography >
+            <div>
+                <Typography variant="headline" variant="subheading">Would you rather: </Typography >
                 <ol>
-                    <li> <Typography component="p"> {optionOne} </Typography> </li>
-                    <li> <Typography component="p"> {optionTwo} </Typography> </li>
+                    <li> <Typography variant="body2"> {optionOne} </Typography> </li>
+                    <li> <Typography variant="body2"> {optionTwo} </Typography> </li>
                 </ol>
             </div>
         );

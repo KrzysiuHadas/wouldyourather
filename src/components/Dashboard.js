@@ -17,7 +17,7 @@ class Dashboard extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.toggleUnansweredClicked}>
+                <button onClick={this.toggleUnansweredClicked} style={{marginTop: 10, marginBottom: 10,}}>
                     {this.state.answered === true
                         ? <p>Show unanswered questions</p>
                         : <p>Show answered questions</p>
@@ -28,9 +28,6 @@ class Dashboard extends Component {
                         ? <QuestionList type={'answered'} />
                         : <QuestionList type={'unanswered'} />
                 }
-                <br />
-                <hr />
-                <br />
             </div>
         )
     }

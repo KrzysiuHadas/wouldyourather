@@ -73,10 +73,10 @@ class QuestionList extends Component {
         const spacing = 16
         return (
             <div>
-                <Grid container spacing={spacing} justify="center">
+                <Grid container spacing={8}>
                     {
                         sorted.map((question) => (
-                            <Grid item xs key={question.id} ><Paper style={{ padding: 10, marginTop: 10, marginBottom: 10 }}><Question id={question.id} /></Paper></Grid >
+                            <Grid item xs={4} key={question.id} ><Paper style={{ padding: 10, marginTop: 10, marginBottom: 10, width: 400 }}><Question id={question.id} /></Paper></Grid >
                         ))
                     }
                 </Grid >

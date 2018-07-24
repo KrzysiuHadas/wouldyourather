@@ -51,6 +51,7 @@ a {
   flex-direction: row;
   justify-content: flex-start;
   text-decoration: none;
+  color: #fff;
 }
 
 .nav li:first-child {

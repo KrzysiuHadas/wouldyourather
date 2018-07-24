@@ -7,7 +7,7 @@ import { _saveQuestionAnswer } from '../utils/_DATA'
 
 
 // temporary user, later choosing from home screen should work
-const AUTHED_ID = 'johndoe'
+const AUTHED_ID = 'sarahedo'
 
 export function handleInitialData() {
     return (dispatch) => {
