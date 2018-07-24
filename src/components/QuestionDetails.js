@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAnswerQuestion } from '../actions/shared';
-
+import { Link } from 'react-router-dom'
 
 const style = {
     'button': {border: 'none'}
@@ -35,7 +35,7 @@ class QuestionDetails extends Component {
     questionAnswered = (e) => {
         e.preventDefault()
         const {authedUser, dispatch} = this.props
-        const currentQuestionID = 'loxhs1bqm25b708cmbf3g'
+        const currentQuestionID = this.props.id
         const answer = e.target.value
 
         dispatch(handleAnswerQuestion({
@@ -46,9 +46,9 @@ class QuestionDetails extends Component {
 
     }
     render() {
-        const { questions, authedUser } = this.props
-        const currentQuestionID = 'loxhs1bqm25b708cmbf3g'
-
+        const { questions, id } = this.props
+        const currentQuestionID = id
+        console.log("sssssss", currentQuestionID);
         let optionOne = ''
         let optionTwo = ''
         let author = ''
@@ -65,6 +65,7 @@ class QuestionDetails extends Component {
         }
 
         return (
+            
             <div>
                 <h2>Would you rather</h2>
                 Author: {author}
@@ -120,10 +121,13 @@ class QuestionDetails extends Component {
     }
 }
 
-function mapStateToProps({ questions, authedUser }) {
+function mapStateToProps({ questions, authedUser }, props) {
+    const id = props.match.params.id
+    console.log("propsy ", props)
     return {
         questions,
-        authedUser
+        authedUser,
+        id
     }
 }
 

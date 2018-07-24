@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/shared';
-
+import { Redirect } from 'react-router-dom'
 class AddQuestion extends Component {
 
     state = {
         optionOne: '',
         optionTwo: '',
+        toHome: false,
     }
 
     handleFirstChange = (e) => {
@@ -44,14 +45,20 @@ class AddQuestion extends Component {
 
         this.setState(()=>({
             optionOne: '',
-            optionTwo: ''
+            optionTwo: '',
+            toHome: true,
         }))
     }
 
 
     
     render() {
-        const {optionOne, optionTwo} = this.state
+        const {optionOne, optionTwo, toHome} = this.state
+
+        if (toHome === true) {
+            return <Redirect to="/" />
+        }
+
         return (
             <div>
                 <h2> Add a new question </h2>

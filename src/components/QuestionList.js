@@ -2,11 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Question from './Question'
 import { Grid, Paper } from '@material-ui/core'
-
-
-const style = {
-    Paper: { padding: 20, marginTop: 10, marginBottom: 10 }
-}
+import { Link } from 'react-router-dom'
 
 
 class QuestionList extends Component {
@@ -27,7 +23,7 @@ class QuestionList extends Component {
                     let matchedQuestionObject = all[id]
                     answeredQuestionsArray = [...answeredQuestionsArray, matchedQuestionObject]
                 }
-                
+
             }
             // sort the answers from most recent
             answeredQuestionsArray.sort(function (x, y) {
@@ -40,7 +36,7 @@ class QuestionList extends Component {
             // iterate through all questions object and see if any of the questions inside
             // are also present in the answered object passed to this function
             for (var id2 in all) {
-                if(!answered.hasOwnProperty(id2)) {
+                if (!answered.hasOwnProperty(id2)) {
                     unansweredQuestionsArray = [...unansweredQuestionsArray, all[id2]]
                 }
             }
@@ -55,7 +51,7 @@ class QuestionList extends Component {
             // iterate through the question IDs
             for (var index in askedQuestions) {
                 //save the question objects that match the IDs of the user-asked questions
-                if(all.hasOwnProperty(askedQuestions[index])) {
+                if (all.hasOwnProperty(askedQuestions[index])) {
                     askedQuestionsArray = [...askedQuestionsArray, all[askedQuestions[index]]]
                 }
             }
@@ -76,7 +72,13 @@ class QuestionList extends Component {
                 <Grid container spacing={8}>
                     {
                         sorted.map((question) => (
-                            <Grid item xs={4} key={question.id} ><Paper style={{ padding: 10, marginTop: 10, marginBottom: 10, width: 400 }}><Question id={question.id} /></Paper></Grid >
+                            <Grid item xs={4} key={question.id} >
+                                <Link to={`/question/${question.id}`} >
+                                    <Paper style={{ padding: 10, marginTop: 10, marginBottom: 10, width: 400 }}>
+                                        <Question id={question.id} />
+                                    </Paper>
+                                </Link>
+                            </Grid >
                         ))
                     }
                 </Grid >
@@ -87,7 +89,7 @@ class QuestionList extends Component {
 
 function mapStateToProps({ questions, users, authedUser }, props) {
     let type = props.type
-    
+
     return {
         questions,
         users,

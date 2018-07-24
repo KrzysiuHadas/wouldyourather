@@ -8,7 +8,7 @@ import Leaderboard from './Leaderboard'
 import QuestionList from './QuestionList'
 import Nav from './Nav'
 
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -39,9 +39,10 @@ class App extends Component {
               ? null
               : <div>
                 <Route path='/' exact component={Dashboard} />
-                <Route path='/leaderboard' exact component={Leaderboard} />
-                <Route path='/profile' exact component={Profile} />
-                <Route path='/add' exact component={AddQuestion} />
+                <Route path='/leaderboard'  component={Leaderboard} />
+                <Route path='/profile'  component={Profile} />
+                <Route path='/add'  component={AddQuestion} />
+                <Route path='/question/:id'  component={QuestionDetails} />
               </div>
             }
           </div>
