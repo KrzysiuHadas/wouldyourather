@@ -8,11 +8,21 @@ const Nav = (props) => {
         <div>
             <nav className="nav">
                 <ul>
+                    {
+                        userAvatar !== '' && 
+                        <li>
+                            <NavLink to="/profile" exact > 
+                                
+                                    <img src={userAvatar} alt="avatar" width="35" height="35" />
+                                
+                            </NavLink>
+                        </li>
+                    }
                     <li><NavLink to="/" exact > <Button>Dashboard </Button></NavLink></li>
                     <li><NavLink to="/leaderboard" exact > <Button>Leaderboard </Button></NavLink></li>
                     <li><NavLink to="/profile" exact > <Button>Profile</Button> </NavLink></li>
                     <li><NavLink to="/add" exact ><Button> New question </Button></NavLink></li>
-                </ul>
+                </ul>   
             </nav>
         </div>
     );

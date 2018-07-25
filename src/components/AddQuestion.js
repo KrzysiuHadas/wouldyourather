@@ -68,7 +68,7 @@ class AddQuestion extends Component {
             <div>
                 <Typography variant="headline" variant="display2"> Add a new question </Typography>
                 
-                <Paper style={{ padding: 10, marginTop: 100, marginBottom: 10, width: 400, height: 220}}>
+                <Paper style={{ padding: 10, marginTop: 50, marginBottom: 10, width: 400, height: 220}}>
                 <Typography variant="headline" variant="headline"> Would you rather</Typography>
                 <br />
                 <br />

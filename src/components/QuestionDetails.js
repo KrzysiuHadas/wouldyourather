@@ -66,8 +66,8 @@ class QuestionDetails extends Component {
 
             <div>
                 <Paper style={{ padding: 10, marginTop: 10, marginBottom: 10, width: 400, height: 200 }}>
-                    <Typography variant="headline" variant="headline"> Would you rather</Typography>
-                    <Typography variant="headline" variant="subheading">Author: @{author}</Typography>
+                    <Typography variant="headline" > Would you rather</Typography>
+                    <Typography variant="subheading">Author: @{author}</Typography>
 
                     {
                         // if the question has been answered, show this:

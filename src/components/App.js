@@ -19,17 +19,19 @@ class App extends Component {
 
   componentDidMount() {
     this.props.dispatch(handleInitialData())
+    
   }
 
   render() {
+    const { avatarURL } = this.props
     return (
       <Router>
         <div>
           <LoadingBar />
-          <AppBar position="static" color="TenBialyNajbardziejGownianyNieUmiemZmienicKurła">
+          <AppBar position="static" color="inherit">
             <Toolbar variant="dense">
               <Typography variant="title" color="inherit">
-                <Nav />
+                <Nav avatarURL={avatarURL} />
               </Typography>
             </Toolbar>
           </AppBar>
@@ -51,9 +53,15 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authedUser, users }) {
+  let avatarURL = '' 
+  if (authedUser && users) {
+    avatarURL = users[authedUser].avatarURL
+  }
+
   return {
-    loading: authedUser === null
+    loading: authedUser === null,
+    avatarURL
   }
 }
 
