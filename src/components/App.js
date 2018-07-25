@@ -40,10 +40,11 @@ class App extends Component {
               ? null
               : <div>
                 <Route path='/' exact component={Dashboard} />
-                <Route path='/leaderboard'  component={Leaderboard} />
-                <Route path='/profile'  component={Profile} />
-                <Route path='/add'  component={AddQuestion} />
-                <Route path='/question/:id'  component={QuestionDetails} />
+                <Route path='/leaderboard' component={Leaderboard} />
+                <Route path='/profile' component={Profile} />
+                <Route path='/add' component={AddQuestion} />
+                <Route path='/question/:id' component={QuestionDetails} />
+                <Route path='/login' component={Login} />
               </div>
             }
           </div>
