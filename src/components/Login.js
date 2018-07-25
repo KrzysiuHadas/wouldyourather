@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
-
+import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
 class Login extends Component {
 
     loginButtonClicked = (e) => {
@@ -18,20 +19,25 @@ class Login extends Component {
             arrayOfUsers.push(users[key])
         })
         return (
-            <div>
+            <Grid container className="center" spacing={24} justify="center" style={{marginTop: 100}}>
                 {
                     arrayOfUsers.map((user) => (
+                        <Grid item xs={1.4} >
+                        <Paper>
                         <div key={user.id}>
-                            <img src={user.avatarURL} width="125" height="125" alt="avatar"/>
-                            <p>{user.id}</p>
+                            <img src={user.avatarURL} width="125" height="125"/>
+                            <br />
                             <button onClick={this.loginButtonClicked}
-                                value={user.id}>
-                                Login
+                                value={user.id}
+                                className="btn">
+                                @{user.id}
                             </button>
                         </div>
+                        </Paper>
+                        </Grid>
                     ))
                 }
-            </div>
+            </Grid>
         )
     }
 }

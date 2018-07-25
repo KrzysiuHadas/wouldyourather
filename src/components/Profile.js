@@ -15,7 +15,6 @@ class Profile extends Component {
   handleLogout = (e) => {
     e.preventDefault()
     const { dispatch } = this.props
-    console.log("wcisnales logout")
     dispatch(setAuthedUser(''))
 
     this.setState(() => ({
