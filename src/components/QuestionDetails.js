@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAnswerQuestion } from '../actions/shared';
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import { Paper } from '@material-ui/core'
 
 class QuestionDetails extends Component {
 
@@ -29,7 +32,7 @@ class QuestionDetails extends Component {
 
     questionAnswered = (e) => {
         e.preventDefault()
-        const {authedUser, dispatch} = this.props
+        const { authedUser, dispatch } = this.props
         const currentQuestionID = this.props.id
         const answer = e.target.value
 
@@ -60,57 +63,66 @@ class QuestionDetails extends Component {
         }
 
         return (
-            
+
             <div>
-                <h2>Would you rather</h2>
-                Author: {author}
-                <br />
-                {
-                    // if the question has been answered, show this:
-                    this.checkIfQuestionAnswered(currentQuestionID) &&
-                    <ul>
-                        <li>
-                            {
-                                this.checkIfQuestionAnswered(currentQuestionID) === 'optionOne' &&
-                                <span role="img">✅ </span>
-                            }
-                            {optionOne} ({numberOfPeopleVotedOne} vote | {numberOfPeopleVotedOne / allVotes * 100}%)
-                        </li>
-                        <li>
-                            {
-                                this.checkIfQuestionAnswered(currentQuestionID) === 'optionTwo' &&
-                                <span role="img">✅ </span>
-                            }
-                            {optionTwo} ({numberOfPeopleVotedTwo} vote | {numberOfPeopleVotedTwo / allVotes * 100}%)
-                        </li>
-                    </ul>
-                }
+                <Paper style={{ padding: 10, marginTop: 10, marginBottom: 10, width: 400, height: 200 }}>
+                    <Typography variant="headline" variant="headline"> Would you rather</Typography>
+                    <Typography variant="headline" variant="subheading">Author: @{author}</Typography>
 
-                {
-                    // if the question has NOT been answered, show this:
-                    this.checkIfQuestionAnswered(currentQuestionID) === null &&
-                    <ul>
-                        <li>
-                            <button
-                                onClick={this.questionAnswered}
-                                value="optionOne"
-                                className='btn'
-                                >
-                                {optionOne}
-                            </button> 
-                        </li>
-                        <li>
-                            <button
-                                onClick={this.questionAnswered}
-                                value="optionTwo"
-                                className='btn'
-                                >
-                                {optionTwo}
-                            </button> 
-                        </li>
-                    </ul>
-                }
+                    {
+                        // if the question has been answered, show this:
+                        this.checkIfQuestionAnswered(currentQuestionID) &&
+                        <ul>
+                            <li>
+                                {
+                                    this.checkIfQuestionAnswered(currentQuestionID) === 'optionOne' &&
+                                    <Typography variant="caption">
+                                        Your answer:
+                                    </Typography>
+                                }
+                                <Typography variant="body2">
+                                    {optionOne} (votes: {numberOfPeopleVotedOne} | {Math.round(numberOfPeopleVotedOne / allVotes * 100)}%)
+                                </Typography>
+                            </li>
+                            <li>
+                                {
+                                    this.checkIfQuestionAnswered(currentQuestionID) === 'optionTwo' &&
+                                    <Typography variant="caption">
+                                        Your answer:
+                                    </Typography>
+                                }
+                                <Typography variant="body2">
+                                    {optionTwo} (votes: {numberOfPeopleVotedTwo} | {Math.round(numberOfPeopleVotedTwo / allVotes * 100)}%)
+                                </Typography>
+                            </li>
+                        </ul>
+                    }
 
+                    {
+                        // if the question has NOT been answered, show this:
+                        this.checkIfQuestionAnswered(currentQuestionID) === null &&
+                        <ul>
+                            <li>
+                                <button
+                                    onClick={this.questionAnswered}
+                                    value="optionOne"
+                                    className='btn'
+                                >
+                                    {optionOne}
+                                </button>
+                            </li>
+                            <li>
+                                <button
+                                    onClick={this.questionAnswered}
+                                    value="optionTwo"
+                                    className='btn'
+                                >
+                                    {optionTwo}
+                                </button>
+                            </li>
+                        </ul>
+                    }
+                </Paper>
             </div>
         )
     }

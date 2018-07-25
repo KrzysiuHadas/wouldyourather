@@ -1,5 +1,5 @@
 import { getInitialData, _saveQuestion } from '../utils/_DATA'
-import { receiveUsers, addAnswerToQuestionToUser } from './users'
+import { receiveUsers, addAnswerToQuestionToUser, addQuestionToUser } from './users'
 import { receiveQuestions, addAnswerToQuestion, addQuestion } from './questions'
 import { setAuthedUser } from './authedUser.js'
 import { showLoading, hideLoading } from 'react-redux-loading'
@@ -37,7 +37,10 @@ export function handleAddQuestion(info) {
         return _saveQuestion(info)
             .then((question) => {
                 dispatch(addQuestion(question))
-                // TODO: add an action that adds that new question ID to the users database
+                dispatch(addQuestionToUser({
+                    id: question.id,
+                    author: question.author
+                }))
             })
     }
 }

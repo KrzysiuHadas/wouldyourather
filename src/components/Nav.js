@@ -2,7 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 
-const Nav = () => {
+const Nav = (props) => {
+    const userAvatar = props.avatarURL
     return (
         <div>
             <nav className="nav">

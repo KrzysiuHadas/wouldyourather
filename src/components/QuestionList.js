@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Question from './Question'
 import { Grid, Paper } from '@material-ui/core'
 import { Link } from 'react-router-dom'
-
+import Typography from '@material-ui/core/Typography'
 
 class QuestionList extends Component {
 
@@ -81,6 +81,11 @@ class QuestionList extends Component {
                         ))
                     }
                 </Grid >
+                <br />
+                <br />
+                {
+                    sorted.length === 0 && <Typography variant="display1">No questions to show!</Typography>
+                }
             </div>
         )
     }
