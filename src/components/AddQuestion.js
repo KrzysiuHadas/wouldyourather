@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { handleAddQuestion } from '../actions/shared';
+import { handleAddQuestion } from '../actions/shared'
 import { Redirect } from 'react-router-dom'
+import TextField from '@material-ui/core/TextField'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import { Paper } from '@material-ui/core'
+
 class AddQuestion extends Component {
 
     state = {
@@ -13,24 +18,24 @@ class AddQuestion extends Component {
     handleFirstChange = (e) => {
         const optionOne = e.target.value
 
-        
+
         this.setState((oldState) => ({
             optionOne,
             optionTwo: oldState.optionTwo
         }))
-        
+
     }
     handleSecondChange = (e) => {
         const optionTwo = e.target.value
-        
+
         this.setState((oldState) => ({
             optionTwo,
             optionOne: oldState.optionOne
         }))
-        
+
     }
 
-        
+
     handleSubmit = (e) => {
         e.preventDefault()
         const optionOneText = this.state.optionOne
@@ -43,7 +48,7 @@ class AddQuestion extends Component {
             optionTwoText
         }))
 
-        this.setState(()=>({
+        this.setState(() => ({
             optionOne: '',
             optionTwo: '',
             toHome: true,
@@ -51,9 +56,9 @@ class AddQuestion extends Component {
     }
 
 
-    
+
     render() {
-        const {optionOne, optionTwo, toHome} = this.state
+        const { optionOne, optionTwo, toHome } = this.state
 
         if (toHome === true) {
             return <Redirect to="/" />
@@ -61,35 +66,47 @@ class AddQuestion extends Component {
 
         return (
             <div>
-                <h2> Add a new question </h2>
-                <h3> Would you rather</h3>
+                <Typography variant="headline" variant="display2"> Add a new question </Typography>
+                
+                <Paper style={{ padding: 10, marginTop: 100, marginBottom: 10, width: 400, height: 220}}>
+                <Typography variant="headline" variant="headline"> Would you rather</Typography>
+                <br />
+                <br />
                 <form onSubmit={this.handleSubmit}>
-                    <textarea
-                        placeholder="First option"
+                    <TextField
+                        placeholder="first option"
                         value={this.state.optionOne}
                         onChange={this.handleFirstChange}
                         name="optionOne"
+                        style={{width: 400}}
                     />
-
-                     <textarea
-                        placeholder="Second option"
+                    <br />
+                    <br />
+                    <TextField
+                        placeholder="second option"
                         value={this.state.optionTwo}
                         onChange={this.handleSecondChange}
+                        className='textfield'
+                        style={{width: 400}}
                     />
-
-                    <button
+                    <br />
+                    <Button
+                        variant="outlined"
                         type='submit'
                         disabled={optionOne === '' || optionTwo === ''}
+                        style={{marginTop: 30}}
                     >
                         Submit
-                    </button>
+                    </Button>
                 </form>
+                </Paper>
+                
             </div>
         )
     }
 }
 
-function mapStateToProps({ authedUser }){
+function mapStateToProps({ authedUser }) {
     return {
         authedUser
     }

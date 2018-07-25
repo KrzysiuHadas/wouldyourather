@@ -35,7 +35,15 @@ a {
 .center {
   text-align: center;
 }
+.centerDiv {
+  margin: 2px auto;
+  color: red;
+}
 
+.textField {
+  width: 1000;
+  margin: 100px 100px 100px 100px;
+}
 
 .active {
   font-weight: bold;

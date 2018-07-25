@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import QuestionList from './QuestionList'
-import Button from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button'
 
 class Dashboard extends Component {
 
