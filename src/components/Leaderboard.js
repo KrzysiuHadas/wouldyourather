@@ -1,5 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
 
 class Leaderboard extends Component {
 
@@ -36,26 +43,30 @@ class Leaderboard extends Component {
         })
 
         return (
-            <table border="1" cellPadding="0" cellSpacing="0" width="500">
-                <tbody>
-                    <tr>
-                        <td>Name</td>
-                        <td>Avatar</td>
-                        <td>Answered questions</td>
-                        <td>Asked questions</td>
-                    </tr>
-                    {
-                        arrayOfFormattedUsers.map((user) => (
-                            <tr key={user.name}>
-                                <td>{user.name}</td>
-                                <td>Avatar</td>
-                                <td>{user.numberOfAnswers}</td>
-                                <td>{user.numberOfQuestionsAsked}</td>
-                            </tr>
-                        ))
-                    }
-                </tbody>
-            </table>
+            <Paper>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Name</TableCell>
+                            <TableCell>Avatar</TableCell>
+                            <TableCell>Answered questions</TableCell>
+                            <TableCell>Asked questions</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {
+                            arrayOfFormattedUsers.map((user) => (
+                                <TableRow key={user.name}>
+                                    <TableCell>@{user.name}</TableCell>
+                                    <TableCell><img src={user.avatarURL} width="35" height="35"/></TableCell>
+                                    <TableCell>{user.numberOfAnswers}</TableCell>
+                                    <TableCell>{user.numberOfQuestionsAsked}</TableCell>
+                                </TableRow>
+                            ))
+                        }
+                    </TableBody>
+                </Table>
+            </Paper>
         )
     }
 }
