@@ -25,7 +25,7 @@ class Profile extends Component {
 
   render() {
     if (!this.state.loggedIn) {
-      return <Redirect to='/login' />
+      return <Redirect to='/' />
     }
     const { users, authedUser } = this.props
     const imageURL = users[authedUser].avatarURL

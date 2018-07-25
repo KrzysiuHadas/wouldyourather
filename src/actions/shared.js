@@ -5,9 +5,7 @@ import { setAuthedUser } from './authedUser.js'
 import { showLoading, hideLoading } from 'react-redux-loading'
 import { _saveQuestionAnswer } from '../utils/_DATA'
 
-
-// temporary user, later choosing from home screen should work
-const AUTHED_ID = 'sarahedo'
+const AUTHED_ID = ''
 
 export function handleInitialData() {
     return (dispatch) => {
