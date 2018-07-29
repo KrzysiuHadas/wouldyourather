@@ -11,7 +11,7 @@ import Page404 from './Page404'
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
-import { Route, Switch, withRouter, Redi } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 
 class App extends Component {
 
