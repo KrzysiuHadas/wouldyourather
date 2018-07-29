@@ -58,7 +58,7 @@ class Leaderboard extends Component {
                             arrayOfFormattedUsers.map((user) => (
                                 <TableRow key={user.name}>
                                     <TableCell>@{user.name}</TableCell>
-                                    <TableCell><img src={user.avatarURL} width="35" height="35"/></TableCell>
+                                    <TableCell><img src={user.avatarURL} width="35" height="35" alt="avatar"/></TableCell>
                                     <TableCell>{user.numberOfAnswers}</TableCell>
                                     <TableCell>{user.numberOfQuestionsAsked}</TableCell>
                                 </TableRow>

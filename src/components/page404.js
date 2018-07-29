@@ -1,11 +1,11 @@
 import React from 'react';
 
-const page404 = () => {
+const Page404 = () => {
     return (
-        <div>
-            Sample 404 page.
+        <div className="center" style={{marginTop: 100}}>
+            This page does not exist. Please go to the root page!
         </div>
     );
 };
 
-export default page404;
+export default Page404;

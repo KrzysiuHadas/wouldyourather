@@ -22,10 +22,10 @@ class Login extends Component {
             <Grid container className="center" spacing={24} justify="center" style={{marginTop: 100}}>
                 {
                     arrayOfUsers.map((user) => (
-                        <Grid item xs={1.4} >
+                        <Grid item xs={1.4}  key={user.id}>
                         <Paper>
-                        <div key={user.id}>
-                            <img src={user.avatarURL} width="125" height="125"/>
+                        <div>
+                            <img alt="avatar" src={user.avatarURL} width="125" height="125"/>
                             <br />
                             <button onClick={this.loginButtonClicked}
                                 value={user.id}

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAnswerQuestion } from '../actions/shared';
 import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
 import { Paper } from '@material-ui/core'
 
 class QuestionDetails extends Component {
@@ -46,7 +45,6 @@ class QuestionDetails extends Component {
     render() {
         const { questions, id } = this.props
         const currentQuestionID = id
-        console.log("sssssss", currentQuestionID);
         let optionOne = ''
         let optionTwo = ''
         let author = ''
@@ -130,7 +128,6 @@ class QuestionDetails extends Component {
 
 function mapStateToProps({ questions, authedUser }, props) {
     const id = props.match.params.id
-    console.log("propsy ", props)
     return {
         questions,
         authedUser,
