@@ -11,7 +11,7 @@ import page404 from './page404'
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch, withRouter } from 'react-router-dom';
 // import AppBar from '@material-ui/core/AppBar';
 // import Toolbar from '@material-ui/core/Toolbar';
 // import Typography from '@material-ui/core/Typography'
@@ -26,9 +26,7 @@ class App extends Component {
   render() {
     const { avatarURL, authedUser } = this.props
     return (
-      <Router>
         <div>
-
           <LoadingBar />
           {
             (authedUser === '')
@@ -46,7 +44,7 @@ class App extends Component {
                           <Route path='/profile' component={Profile} />
                           <Route path='/add' component={AddQuestion} />
                           <Route path='/question/:id' component={QuestionDetails} />
-                          <Route path='page404' component={page404} />
+                          <Route path='/page404' component={page404} />
                         </Switch>
                       </div>
                     </Fragment>
@@ -54,7 +52,6 @@ class App extends Component {
               </Fragment>
           }
         </div>
-      </Router>
     )
   }
 }
@@ -72,4 +69,4 @@ function mapStateToProps({ authedUser, users }) {
   }
 }
 
-export default connect(mapStateToProps)(App)
+export default withRouter(connect(mapStateToProps)(App))

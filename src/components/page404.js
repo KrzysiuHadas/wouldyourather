@@ -3,7 +3,7 @@ import React from 'react';
 const page404 = () => {
     return (
         <div>
-            kkldnlkandlkanlkdnaslkdnsal;knd
+            Sample 404 page.
         </div>
     );
 };
