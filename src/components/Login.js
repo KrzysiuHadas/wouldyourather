@@ -3,27 +3,16 @@ import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
-import { Redirect } from 'react-router-dom'
 class Login extends Component {
-
-    state = {
-        loggedIn: false,
-    }
 
     loginButtonClicked = (e) => {
         e.preventDefault()
-        const { dispatch } = this.props
-        dispatch(setAuthedUser(e.target.value))
-        this.setState(()=>({
-            loggedIn: true,
-        }))
+        
+        this.props.dispatch(setAuthedUser(e.target.value))
     }
 
     render() {
-        if(this.state.loggedIn === true) {
-            console.log("2wad;oksamnd;skmoip3m12")
-            return <Redirect to='/' />
-        }
+        
         const { users } = this.props
         let arrayOfUsers = []
         users && Object.keys(users).forEach(function (key) {
@@ -53,9 +42,10 @@ class Login extends Component {
     }
 }
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ users, authedUser }) {
     return {
-        users
+        users,
+        authedUser
     }
 }
 

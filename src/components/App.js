@@ -6,14 +6,15 @@ import AddQuestion from './AddQuestion'
 import Login from './Login'
 import Leaderboard from './Leaderboard'
 import Nav from './Nav'
+import page404 from './page404'
 
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography'
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+// import AppBar from '@material-ui/core/AppBar';
+// import Toolbar from '@material-ui/core/Toolbar';
+// import Typography from '@material-ui/core/Typography'
 
 class App extends Component {
 
@@ -37,19 +38,16 @@ class App extends Component {
                   this.props.loading === true
                     ? null
                     : <Fragment>
-                      <AppBar position="static" color="inherit">
-                        <Toolbar variant="dense">
-                          <Typography variant="title" color="inherit">
-                            <Nav avatarURL={avatarURL} />
-                          </Typography>
-                        </Toolbar>
-                      </AppBar>
+                      <Nav avatarURL={avatarURL} />
                       <div style={{ padding: 20 }} >
-                        <Route path='/' exact component={Dashboard} />
-                        <Route path='/leaderboard' component={Leaderboard} />
-                        <Route path='/profile' component={Profile} />
-                        <Route path='/add' component={AddQuestion} />
-                        <Route path='/question/:id' component={QuestionDetails} />
+                        <Switch>
+                          <Route path='/' exact component={Dashboard} />
+                          <Route path='/leaderboard' component={Leaderboard} />
+                          <Route path='/profile' component={Profile} />
+                          <Route path='/add' component={AddQuestion} />
+                          <Route path='/question/:id' component={QuestionDetails} />
+                          <Route path='page404' component={page404} />
+                        </Switch>
                       </div>
                     </Fragment>
                 }

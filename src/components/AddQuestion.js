@@ -18,13 +18,12 @@ class AddQuestion extends Component {
     handleFirstChange = (e) => {
         const optionOne = e.target.value
 
-
         this.setState((oldState) => ({
             optionOne,
             optionTwo: oldState.optionTwo
         }))
-
     }
+
     handleSecondChange = (e) => {
         const optionTwo = e.target.value
 
@@ -32,7 +31,6 @@ class AddQuestion extends Component {
             optionTwo,
             optionOne: oldState.optionOne
         }))
-
     }
 
 
@@ -100,7 +98,6 @@ class AddQuestion extends Component {
                     </Button>
                 </form>
                 </Paper>
-                
             </div>
         )
     }

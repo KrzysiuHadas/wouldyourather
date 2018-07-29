@@ -19,11 +19,12 @@ class Profile extends Component {
 
     this.setState(() => ({
       loggedIn: false,
-    })) 
+    }))
+    console.log("fsafafa " , this.state.loggedIn )
   }
 
   render() {
-    if (!this.state.loggedIn) {
+    if (this.props.authedUser === '') {
       return <Redirect to='/' />
     }
     const { users, authedUser } = this.props
